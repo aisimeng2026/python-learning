@@ -1,6 +1,7 @@
 import json
 import os
 
+
 class TodoManager:
     def __init__(self, filename="todo.json"):
         self.filename = filename
@@ -15,7 +16,7 @@ class TodoManager:
 
     def save_data(self):
         with open(self.filename, "w", encoding="utf-8") as f:
-            json.dump(self.tasks, f,ensure_ascii=False, indent=4)
+            json.dump(self.tasks, f, ensure_ascii=False, indent=4)
 
     def add_task(self, task_name):
         # 每个任务是一个字典
@@ -37,8 +38,8 @@ class TodoManager:
         print("----------------")
 
     def mark_done(self, index):
-        #用户输入的序号是从1开始的，列表索引是从0开始的
-        real_index = index -1
+        # 用户输入的序号是从1开始的，列表索引是从0开始的
+        real_index = index - 1
         if 0 <= real_index < len(self.tasks):
             self.tasks[real_index]["done"] = True
             self.save_data()
@@ -47,7 +48,7 @@ class TodoManager:
             print("输入的序号有误！")
 
 
-#=== 主程序 ===
+# === 主程序 ===
 if __name__ == "__main__":
     manager = TodoManager()
 
@@ -73,4 +74,3 @@ if __name__ == "__main__":
             break
         else:
             print("输入无效，请重试。")
-
